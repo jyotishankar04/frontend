@@ -13,8 +13,8 @@ function Navbar() {
   });
 
   return (
-    <div className="flex w-full">
-      <div className=" z-10 top-0 sticky w-full p-4 bg-zinc-100 flex justify-between items-center ">
+    <div className="flex w-full top-0 sticky">
+      <div className=" z-10  w-full p-4 bg-zinc-100 flex justify-between items-center ">
         <Link
           className="text-4xl font-semibold text-blue-900"
           to={localStorage.getItem("token") ? "/blogs" : "/signup"}
