@@ -81,7 +81,7 @@ function Blogs() {
                 )
               : ""}
           </div>
-          <div className="  border-4 shadow-md shadow-black w-[30%] m-3 h-fit rounded-lg overflow-x-hidden">
+          <div className="hidden md:block  border-4 shadow-md shadow-black w-[30%] m-3 h-fit rounded-lg overflow-x-hidden">
             <h1 className="w-full text-2xl font-semibold text-center bg-blue-800 text-white py-1">
               Other Users
             </h1>
