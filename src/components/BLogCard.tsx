@@ -1,4 +1,5 @@
 import { Avatar } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 function BLogCard({
   id,
@@ -13,12 +14,19 @@ function BLogCard({
   content: string;
   publishedData: string;
 }) {
+  const [publishedDate, setPublishedDate] = useState(publishedData);
+  useEffect(() => {
+    const temp = publishedData.split("T")[0];
+    const newTemp = temp.split("-").reverse();
+    const join = newTemp.join("-");
+    setPublishedDate(join);
+  }, []);
   return (
     <Link
       to={`/blog/${id}`}
       className="cursor-pointer p-5 border-b-2 md:w-8/12 w-full  flex flex-col gap-4"
     >
-      <BlogAvtar published={publishedData} authorName={authorName} />
+      <BlogAvtar published={publishedDate} authorName={authorName} />
       <div>
         <h1 className="line-clamp-2 text-3xl font-semibold ">{title}</h1>
         <p className="line-clamp-2 text-gray-600 leading-5 mt-2">{content}</p>

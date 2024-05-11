@@ -1,4 +1,3 @@
-const BACKEND_URL: string =
-  "https://backend.patrajyotishankarlearn.workers.dev";
+const BACKEND_URL: string = "http://127.0.0.1:8787";
 
 export { BACKEND_URL };

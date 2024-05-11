@@ -32,7 +32,7 @@ function Blogs() {
                     name: string;
                   };
                   title: string;
-                  publishedData: string;
+                  postDate: string;
                 },
                 index: number
               ) => (
@@ -42,7 +42,7 @@ function Blogs() {
                   content={blog.content}
                   authorName={blog.author.name || "Annynomous "}
                   title={blog.title}
-                  publishedData={"2nd feb 2024"}
+                  publishedData={blog.postDate}
                 />
               )
             )
