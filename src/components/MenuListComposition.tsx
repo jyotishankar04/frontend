@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Stack from "@mui/material/Stack";
 import { Avatar } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function MenuListComposition({
   setIsEditerOpen,
@@ -17,7 +17,7 @@ export default function MenuListComposition({
 }) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
-
+  const navigate = useNavigate();
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -44,6 +44,10 @@ export default function MenuListComposition({
   function handleCreateClose(event: Event | React.SyntheticEvent) {
     setIsEditerOpen(true);
     handleClose(event);
+  }
+  function handleGoProfile(event: Event | React.SyntheticEvent) {
+    handleClose(event);
+    navigate("/user/profile");
   }
 
   // return focus to the button when we transitioned from !open -> open
@@ -93,7 +97,7 @@ export default function MenuListComposition({
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                    <MenuItem onClick={handleGoProfile}>My Profile</MenuItem>
                     <MenuItem
                       onClick={handleCreateClose}
                       onClickCapture={() => {}}

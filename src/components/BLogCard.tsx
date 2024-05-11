@@ -24,7 +24,7 @@ function BLogCard({
   return (
     <Link
       to={`/blog/${id}`}
-      className="cursor-pointer p-5 border-b-2 md:w-8/12 w-full  flex flex-col gap-4"
+      className="cursor-pointer p-5 border-b-2  w-full  flex flex-col gap-4"
     >
       <BlogAvtar published={publishedDate} authorName={authorName} />
       <div>

@@ -1,6 +1,6 @@
 function Sceleton() {
   return (
-    <div>
+    <div className="w-full">
       <div
         role="status"
         className="w-full p-4 space-y-4 max-h-[calc(100vh-100px)] overflow-hidden divide-y divide-gray-200 animate-pulse dark:divide-gray-700 md:p-6 dark:border-gray-700"

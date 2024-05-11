@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { FaUserCircle } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
 import Spinner from "../components/Spinner";
@@ -25,7 +25,6 @@ function FullBlog() {
   });
   const [loading, setLoding] = useState({});
   const location = useLocation();
-  const navigate = useNavigate();
 
   const idArray = location.pathname.split("/");
   const id = idArray[idArray.length - 1];
@@ -54,15 +53,7 @@ function FullBlog() {
   return (
     <div className="w-full h-screen flex flex-col items-center justify-start ">
       <Navbar />
-      <button
-        onClick={() => {
-          navigate("/blogs");
-        }}
-        className="  rounded-lg hover:bg-blue-950 py-1 px-10 mt-2 bg-blue-800 text-white font-semibold"
-      >
-        Go Back
-      </button>
-      <div className="flex w-10/12 h-full flex-col  px-10 mt-8 gap-5    md:flex-row-reverse md:justify-between md:px-10">
+      <div className="flex md:w-10/12 w-full pb-10 h-full flex-col  px-10 mt-8 gap-5    md:flex-row-reverse md:justify-between md:px-10">
         <div className="">
           <h1 className="hidden md:block">Author</h1>
           <AuthorProfile name={blogs.author.name || ""} />

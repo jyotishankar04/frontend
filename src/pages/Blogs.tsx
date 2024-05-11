@@ -19,34 +19,36 @@ function Blogs() {
 
   return (
     <div>
-      <Navbar />
+      <div className="w-full flex flex-col  items-center">
+        <Navbar />
 
-      <div className="flex flex-col justify-start items-center gap-2">
-        {Array.isArray(blogs)
-          ? blogs.map(
-              (
-                blog: {
-                  id: string;
-                  content: string;
-                  author: {
-                    name: string;
-                  };
-                  title: string;
-                  postDate: string;
-                },
-                index: number
-              ) => (
-                <BLogCard
-                  key={index}
-                  id={blog.id}
-                  content={blog.content}
-                  authorName={blog.author.name || "Annynomous "}
-                  title={blog.title}
-                  publishedData={blog.postDate}
-                />
+        <div className="flex flex-col md:w-8/12 justify-start items-center gap-2">
+          {Array.isArray(blogs)
+            ? blogs.map(
+                (
+                  blog: {
+                    id: string;
+                    content: string;
+                    author: {
+                      name: string;
+                    };
+                    title: string;
+                    postDate: string;
+                  },
+                  index: number
+                ) => (
+                  <BLogCard
+                    key={index}
+                    id={blog.id}
+                    content={blog.content}
+                    authorName={blog.author.name || "Annynomous "}
+                    title={blog.title}
+                    publishedData={blog.postDate}
+                  />
+                )
               )
-            )
-          : ""}
+            : ""}
+        </div>
       </div>
       <Footer />
     </div>
