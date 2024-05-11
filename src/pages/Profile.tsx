@@ -1,35 +1,18 @@
 import { Avatar } from "@mui/material";
 import Navbar from "../components/Navbar";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { BACKEND_URL } from "../config";
+import { useState } from "react";
 import Spinner from "../components/Spinner";
 import Sceleton from "../components/Sceleton";
 import BLogCard from "../components/BLogCard";
 import ProfileEditer from "../components/ProfileEditer";
+import { useUserPosts } from "../hooks";
+import { useLocation } from "react-router-dom";
 
 function Profile() {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const [user, setUser] = useState<{ name: string; userBio: string }>({
-    name: "",
-    userBio: "",
-  });
-  // const navigate = useNavigate();
-  const [posts, setPosts] = useState({});
-  const [loading, setLoding] = useState(true);
-  useEffect(() => {
-    axios
-      .get(`${BACKEND_URL}/api/v1/user/profile`, {
-        headers: { Authorization: "Bearer " + localStorage.getItem("token") },
-      })
-
-      .then((res) => {
-        setUser(res.data.user);
-        setPosts(res.data.posts);
-        setLoding(false);
-      });
-  }, []);
+  const { user, loading, posts } = useUserPosts();
 
   if (loading) {
     return (
@@ -46,9 +29,16 @@ function Profile() {
       </div>
     );
   }
+
   return (
     <div className="w-full h-screen">
-      <ProfileEditer setIsOpen={setIsOpen} isOpen={isOpen} />
+      <div
+        className={`${
+          location.pathname == "/user/profile" ? "block" : "hidden"
+        }`}
+      >
+        <ProfileEditer setIsOpen={setIsOpen} isOpen={isOpen} />
+      </div>
       <Navbar />
       <div className="flex flex-col-reverse  md:flex-row md:w-[60%] justify-between   items-start ">
         <div className="w-full relative h-full flex flex-col items-center  ">
@@ -70,7 +60,7 @@ function Profile() {
               : ""}
           </div>
         </div>
-        <div className="md:w-[35%] w-full right-0 md:fixed flex flex-col  items-center bg-gray-300 md:m-5 rounded-lg h-auto ">
+        <div className="md:w-[35%] shadow-lg shadow-black border-2 border-gray-400 w-full right-0 md:fixed flex flex-col  items-center bg-gray-300 md:m-5 rounded-lg h-auto ">
           <div className="m-5">
             <Avatar
               sx={{ width: 150, height: 150 }}
@@ -88,7 +78,9 @@ function Profile() {
             onClick={() => {
               setIsOpen(true);
             }}
-            className="w-[90%] mb-4 rounded-lg font-semibold hover:bg-gray-950 bg-gray-700 py-2 text-white m-auto"
+            className={`${
+              location.pathname == "/user/profile" ? "block" : "hidden"
+            } w-[90%] mb-4 rounded-lg font-semibold hover:bg-gray-950 bg-gray-700 py-2 text-white m-auto`}
           >
             Edit Profile
           </button>
