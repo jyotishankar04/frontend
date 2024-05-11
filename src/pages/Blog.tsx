@@ -8,6 +8,7 @@ import Spinner from "../components/Spinner";
 interface Blog {
   title: string;
   content: string;
+  postDate: string;
   author: {
     name: string;
   };
@@ -17,6 +18,7 @@ function FullBlog() {
   const [blogs, setBlog] = useState<Blog>({
     title: "",
     content: "",
+    postDate: "",
     author: {
       name: "",
     },
@@ -60,14 +62,14 @@ function FullBlog() {
       >
         Go Back
       </button>
-      <div className="flex w-10/12 h-full flex-col justify-end px-10 mt-8 gap-5    md:flex-row-reverse md:justify-between md:px-10">
+      <div className="flex w-10/12 h-full flex-col  px-10 mt-8 gap-5    md:flex-row-reverse md:justify-between md:px-10">
         <div className="">
           <h1 className="hidden md:block">Author</h1>
           <AuthorProfile name={blogs.author.name || ""} />
         </div>
         <div className=" flex h-full gap-3 flex-col ">
           <h1 className="text-4xl font-semibold  capitalize">{blogs.title}</h1>
-          <p className="text-gray-600">Posted on august 24 2004</p>
+          <p className="text-gray-600">{blogs.postDate}</p>
           <p className="  text-xl leading-6 text-gray-700 font-mono">
             {blogs.content}
           </p>
