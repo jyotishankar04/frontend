@@ -13,7 +13,7 @@ function Navbar() {
   });
 
   return (
-    <div className="flex z-10  w-full top-0 sticky">
+    <div className="flex z-20  w-full top-0 sticky">
       <div className="  w-full p-4 bg-zinc-100 flex justify-between items-center ">
         <Link
           className="text-4xl font-semibold text-blue-900"
